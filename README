@@ -1,0 +1,38 @@
+Step 1: Install prerequisites
+postgresql, postgis, java, osmosis, gdal, ant, git
+
+Step 2: Initialize Postgresql
+Adjust scripts/initdb.sh to your needs
+Execute initdb.sh - probably you need it to run with the pgsql db user
+
+Step 3: Build Java Sources
+cd src and then run ant
+
+Step 4: Edit config.cfg
+I have gatherd all parameters further used in one central config file.
+All further scripts will use that file
+
+Step 5: Init Tree World
+To create DB tables and functions you need to run these commands:
+
+psql -d osm osm -f sql/inittreeworld.sql
+psql -d osm osm -f sql/createtree.sql
+psql -d osm osm -f sql/iso3166-1.sql
+psql -d osm osm -f sql/iso3166-2.sql
+
+Step 6: Import OSM Boundary Data to Postgres with osmosis
+fetch planet (pbf) and adjust scripts/importosm.sh to your needs
+ATTENTION: The script will truncate your DB before importing!
+
+
+Step 7: Generate Polygons
+run scripts/generatepolygons.sh
+With this script all polygons and parent/child connections will be renderd
+
+Step 8: Generate Website
+run scripts/generatewebsite.sh
+
+Step 9: Generate Shapefiles
+run scripts/generateshapes.sh
+
+
