@@ -13,7 +13,7 @@ import org.apache.commons.cli.*;
 
 /**
  *
- * @author dieterbusse
+ * @author dbusse
  */
 public class WebsiteBuilder {
     
@@ -24,9 +24,9 @@ public class WebsiteBuilder {
     public static String db_host = "freebsd";
     public static String db_user = "osm";
     public static String db_pw = "osm";
-    public static String template_path = "/Users/dieterbusse/mapping/coding/BoundaryTreePrinter/template/";
-    public static String website_path = "/Users/dieterbusse/mapping/website/";
-    public static String shape_path = "/Volumes/fast/data/world/shapes/";
+    public static String template_path = "";
+    public static String website_path = "";
+    public static String shape_path = "";
 
     /**
      * @param args the command line arguments
@@ -455,7 +455,7 @@ public class WebsiteBuilder {
                         template_main.append("<td BGCOLOR=\"#FF0000\">NOT FOUND IN OSM</td>");
                     } else {
                         if (i == relcol) {
-                            v = "<a href=\"http://www.openstreetmap.org/browse/relation/" + v + "\">" + v + "  <a href=\"http://ra.osmsurround.org/analyzeRelation?relationId=" + v + "\">RA</a></a>";
+                            v = v+" - <a href=\"http://www.openstreetmap.org/browse/relation/"+ v + "\">OSM </a> - <a href=\"http://ra.osmsurround.org/analyzeRelation?relationId=" + v + "\">RA</a> - <a href=\"http://localhost:8111/import?url=http://www.openstreetmap.org/api/0.6/relation/"+v+"/full\">JOSM</a>";
                         }
                         template_main.append("<td>" + v + "</td>");
                     }

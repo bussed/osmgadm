@@ -12,7 +12,7 @@ import org.apache.commons.cli.*;
 
 /**
  *
- * @author dieterbusse
+ * @author dbusse
  */
 public class TreeBuilder {
 
